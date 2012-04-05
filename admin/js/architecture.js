@@ -1733,7 +1733,11 @@ function addDisplayObject(objectToAdd,regionid,configure){
 			function(){
 				var item=jQuery(this);
 				if (item.attr("type") != "radio" || (item.attr("type") =="radio" && item.is(':checked'))) {
-					availableObjectParams[item.attr("name")] = item.val();
+					if (!availableObjectParams[item.attr("name")]) {
+						availableObjectParams[item.attr("name")] = item.val();
+					} else {
+						availableObjectParams[item.attr("name")] += "|"+item.val();
+					}
 				}
 			}
 		)
