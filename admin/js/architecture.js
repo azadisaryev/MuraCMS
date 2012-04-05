@@ -1736,7 +1736,10 @@ function addDisplayObject(objectToAdd,regionid,configure){
 					if (!availableObjectParams[item.attr("name")]) {
 						availableObjectParams[item.attr("name")] = item.val();
 					} else {
-						availableObjectParams[item.attr("name")] += "|"+item.val();
+						if (!jQuery.isArray(availableObjectParams[item.attr("name")])) {
+							availableObjectParams[item.attr("name")] = [availableObjectParams[item.attr("name")]];
+						}
+						availableObjectParams[item.attr("name")].push(item.val());
 					}
 				}
 			}
